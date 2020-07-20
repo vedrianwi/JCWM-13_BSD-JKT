@@ -1,0 +1,4 @@
+1. simulasi login => data user
+2. register => check if user already exist
+3. edit user => username, email, atau password => pacth
+3. setup MySQL

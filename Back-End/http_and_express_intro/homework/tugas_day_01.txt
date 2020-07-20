@@ -1,0 +1,7 @@
+1. Review materi ttg API, baca TTG RESTAPI, HTTP PROCTOCOL, HTPP CODE
+2. create server using http module handle request
+/ and method GET => 'welcome to my APIs'
+/home method GET => home.html
+/profile method GET => profile.html => isi profile kalian
+/profile method POST => handle request data
+page 404 not found => 404.html
