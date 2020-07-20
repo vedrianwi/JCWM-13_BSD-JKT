@@ -1,0 +1,287 @@
+<script>
+    // product, price, and stock
+    let products = [
+        {
+            name : 'Apple 🍎',
+            price : 1500,
+            stock : 10
+        },
+        {
+            name : 'Mango 🥭',
+            price : 2000,
+            stock : 15
+        },
+        {
+            name : 'Grape 🍇',
+            price : 1000,
+            stock : 17
+        },
+    ]
+
+    let users = [
+        {
+            username : 'admin',
+            role : 'admin'
+        }
+    ]
+
+    let histories = []
+
+    class Product {
+        constructor(_name, _price, _stock) {
+            this.name = _name
+            this.price = _price
+            this.stock = _stock
+        }
+    }
+
+    class User {
+        constructor(_username) {
+            this.username = _username
+        }
+        role = 'user'
+    }
+
+    class History {
+        constructor(_user, _total, _product) {
+            this.user = _user
+            this.total = _total
+            this.product = _product
+        }
+    }
+
+    function showProduct () {
+        let currentProduct = 'Our Product\n'
+        products.forEach((item, index) => currentProduct += `${index+1}. ${item.name} : Rp ${item.price},00 per-kg\n`)
+        return currentProduct
+    }
+
+    function register () {
+        register : while (true) {
+            let newUsername = prompt('Input your username : ')
+            
+            // ask user confirmation
+            let conf = confirm(`Are you sure to register as ${newUsername} ?`)
+            if (conf === true) {
+                users.push(new User(newUsername))
+                break register
+            }
+        }
+    }
+
+    function showAllUsers () {
+        let result = 'Users\n', no = 1
+        users.forEach((item, index) => {
+            item.role === 'user' ? result += `${no++}. id : ${index} : ${item.username}\n` : null
+        })
+        return result
+    }
+
+    function showHistories () {
+        let result = 'Transaction Histories : \n'
+        histories.forEach((item, index) => {
+            result += `${index + 1}. user : ${item.user} \n total : ${item.total} \n products : ${item.product}\n`
+        })
+        return result
+    }
+
+    function admin () {
+        adminMenu : while (true) {
+            // show admin menu
+            let adminChoice = parseInt(prompt(`
+            Admin menu :
+            1. Add product ➕
+            2. Delete product 🚮
+            3. Edit product 🛠
+            4. Show Product 🛒
+            5. Show Users
+            6. Manage Users
+            7. Show history
+            8. Log out 👋
+            \n\n
+            `))
+    
+            if (adminChoice === 1) { // add product
+                // prompt user input
+                let newProduct = prompt('Add new product name :')
+                let newPrice = parseInt(prompt('Add new product price : '))
+                let newStock = parseInt(prompt('Add how much product in stock : '))
+    
+                // check user input
+                if (newProduct === '' || newPrice === NaN || newStock === NaN) {
+                    alert('Wrong input 😔.')
+                } else {
+                    products.push(new Product(newProduct, newPrice, newStock))
+                }
+            } else if (adminChoice === 2) { //delete product
+                // show product
+                let remove = parseInt(prompt(showProduct() + '\n\nChoose product to delete 🚮'))
+    
+                // check user input
+                if (remove === NaN || remove > products.length || remove < 0){
+                    alert('Wrong input 😔.') 
+                } else {
+                    products.splice(remove - 1, 1)
+                }
+            } else if (adminChoice === 3) { // edit product
+                // show product
+                let edit = parseInt(prompt(showProduct() + '\n\nChoose product to edit 🛠'))
+    
+                // check user input
+                if (edit === NaN || edit > products.length || edit < 0) {
+                    alert('Wrong input 😔.') 
+                } else {
+                    let editProduct = prompt('Edit product name : ', products[edit - 1].name) // prompt('message', default value)
+                    let editPrice = parseInt(prompt(`Edit ${editProduct} price : `, products[edit - 1].price))
+                    let editStock = parseInt(prompt(`Edit ${editProduct} stock :`, products[edit - 1].stock))
+                    
+                    // edit array element
+                    products[edit - 1].name = editProduct
+                    products[edit - 1].price = editPrice
+                    products[edit - 1].stock = editStock
+                }
+            } else if (adminChoice === 4) { // show product
+                alert(showProduct())
+            } else if (adminChoice === 5) { // show all users
+                alert(showAllUsers())
+            } else if (adminChoice === 6) { // manage user
+                // ask user input
+                let editRole = parseInt(prompt(showAllUsers() + '\n\n Input user id for role edit :'))
+                // console.log(editRole)
+                // check user input
+                if (editRole === NaN || editRole > users.length || editRole < 0) {
+                    alert('Wrong input 😔.') 
+                } else  {
+                    let role = parseInt(prompt(`
+                    Choose role : 
+                    1. admin
+                    2. user
+                    `))
+                    users[editRole].role = role === 1 ? 'admin' : 'user'
+                }
+            } else if (adminChoice === 7) { // show histories
+                alert(showHistories())
+            } else { // logout
+                break adminMenu
+            }
+        }
+    }
+
+    function user (userIndex) {
+        userMenu : while (true) {
+            // show user menu
+            let userChocie = parseInt(prompt(`
+            Wellcome, ${users[userIndex].username}.
+            1. All Product 🛒
+            2. Buy 💳
+            3. Log out 👋
+            `))
+    
+            // check user choice
+            if (userChocie === 1) { // show product
+                alert(showProduct())
+            } else if (userChocie === 2) {
+                shop : while (true) {
+                    // show all product
+                    alert(showProduct())
+    
+                    // ask user input
+                    let quantity = new Array(products.length) // create array to store user cart
+                    for (let i = 0; i < products.length; i++) {
+                        inputQuantity : while (true) {
+                            quantity[i] = parseInt(prompt(`How many ${products[i].name} you want to buy ?`, 0))
+                            
+                            // check user input
+                            if (quantity[i] > products[i].stock) {
+                                alert(`⚠ input wrong!, ${products[i].name} out of stock = ${products[i].stock}`)
+                            } else {
+                                break inputQuantity
+                            }
+                        }
+                    }
+    
+                    // calculate total price or receipt
+                    let totalPrice = 0
+                    for (let i = 0; i < quantity.length; i++) {
+                        totalPrice += quantity[i] * products[i].price
+                    }
+    
+                    // show user receipt
+                    let receipt = 'you buy : \n'
+                    for (let i = 0; i < quantity.length; i++) {
+                        receipt += `${i+1}. ${quantity[i]} of ${products[i].name} = ${quantity[i]} x ${products[i].price} \n`
+                    }
+                    alert(receipt + `\n\ntotal  = 💰 Rp ${totalPrice},00`)
+
+                    // create data for history
+                    // prompt user input for payment
+                    let productHistory = quantity.map((item, index) => item = `${item} x ${products[index].name}`), money
+                    payment : while (true) {
+                        money = parseInt(prompt('Input your total 💰 payment!', 0))
+                        if (money < totalPrice) { // check payment is not enough
+                            alert('Not enough money 🙏.')
+                        } else if (money > totalPrice) {
+                            alert(`
+                            Thank you. 🎉
+                            your refund = 💰 Rp ${money - totalPrice},00
+                            `)
+                            histories.push(new History(users[userIndex].username, totalPrice, productHistory))
+                            break payment
+                        } else {
+                            histories.push(new History(users[userIndex].username, totalPrice, productHistory))
+                            alert('Thank you 🎉.')
+                            break payment
+                        }
+                    }
+    
+                    // ask confirmation
+                    let conf = confirm('Back to menu 🏠?')
+                    if (conf === false) break shop
+                }
+            } else { // log out
+                break userMenu
+            }
+        }
+    }
+
+    // main loop
+    main : while (true) {
+        // show home menu
+        const main = parseInt(prompt(`
+        🏬 Welcome to Market
+        1. Login
+        2. Register
+        3. Exit
+        `))
+
+        if (main === 1) { // login
+            login : while (true) {
+                let username = prompt('Please input your username 🧑 : '), userIndex
+                
+                // check username in database
+                for (let i = 0; i < users.length; i++) {
+                    if (users[i].username === username) {
+                        userIndex = i
+                    }
+                }
+
+                // check error if user does't found
+                if (userIndex === undefined) {
+                    alert('😔 Sorry, user doesn\'t found.')
+                    break login
+                } else { // if user exist in database, then check user role
+                    if (users[userIndex].role === 'admin') {
+                        admin()
+                    } else { // role = 'user'
+                        user(userIndex)
+                    }
+                    break login
+                }
+            }
+        } else if (main === 2) { // register
+            register()
+        } else { // exit
+            break main
+        }
+    }    
+</script>

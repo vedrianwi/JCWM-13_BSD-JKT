@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Timer</title>
+    </head>
+    <style>
+        body {
+            margin-top: 20%;
+            transition: 200ms ease-in-out;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            font-size: 100px;
+        }
+    </style>
+    <body>
+        <center>
+            <div id='container'>
+                <div>00</div><span>:</span>
+                <div>00</div><span>:</span>
+                <div>00</div>&nbsp<span></span>
+            </div>
+            <button type="button" onclick="start()">Start</button>
+            <button type="button" onclick="stop()">Stop</button>
+        </center>
+    </body>
+    <script>
+        let date = new Date(), 
+        hour = date.getHours(), 
+        minutes = date.getMinutes(), 
+        seconds = date.getSeconds(),
+        local = date.toLocaleTimeString().split(' ')[1]
+
+        // change div innerHTML or textContent
+        let div = document.getElementById('container').getElementsByTagName('div')
+        div[0].innerHTML = hour >= 10 ? hour : `0${hour}`
+        div[1].innerHTML = minutes >= 10 ? minutes : `0${minutes}`
+        div[2].innerHTML = seconds >= 10 ? seconds : `0${seconds}`
+        document.getElementsByTagName('span')[2].textContent = local
+
+        // on button start and stop
+        let setId, colors = ['#55efc4', '#74b9ff', '#fd79a8', '#ffeaa7', '#00cec9', '#a29bfe'], value = true, blinkId
+        function start () {
+            setId = setInterval(() => {
+                seconds++
+                div[2].innerHTML = seconds >= 10 ? seconds : `0${seconds}`
+                if (seconds >= 60) {
+                    minutes++
+                    seconds = 0
+                }
+                div[1].innerHTML = minutes >= 10 ? minutes : `0${minutes}`
+                if (minutes >= 60) {
+                    hour++
+                    minutes = 0
+                }
+                div[0].innerHTML = hour >= 10 ? hour : `0${hour}`
+
+                // change body color
+                if (seconds % 10 === 0) {
+                    document.body.style.backgroundColor = colors[seconds/10]
+                }
+
+                // make semicolon blink
+            }, 1000)
+            blinkId = setInterval(() => {
+                blink(value)
+                value =!value
+            }, 500)
+        }
+
+        function stop () {
+            clearInterval(setId)
+            clearInterval(blinkId)
+            document.body.style.backgroundColor = 'white'
+            let span = document.getElementsByTagName('span')
+            span[0].style.opacity = 1
+            span[1].style.opacity = 1
+        }
+
+        function blink (value) {
+            let span = document.getElementsByTagName('span')
+            if (value) {
+                span[0].style.opacity = 0
+                span[1].style.opacity = 0
+            } else {
+                span[0].style.opacity = 1
+                span[1].style.opacity = 1
+            }
+        }
+    </script>
+</html>

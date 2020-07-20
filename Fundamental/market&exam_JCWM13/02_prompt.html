@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>2. Prompt</title>
+    </head>
+    <body></body>
+    <script>
+        let max, min, arrayNumber = []
+        while (true) {
+            // as user input
+            let numb = parseInt(prompt('Masukan angka : '))
+
+            // check user input
+            if (isNaN(numb)) {
+                console.log(arrayNumber.sort((a, b) => a - b))
+                console.log('min value : ' + min)
+                console.log('max value : ' + max)
+                break
+            } else {
+                arrayNumber.push(numb)
+
+                if (min === undefined && max === undefined) {
+                    min = numb
+                    max = numb
+                }
+
+                if (numb > max && max !== undefined) {
+                    max = numb
+                } else if (numb < min && min !== undefined) {
+                    min = numb
+                }
+            }
+
+            // console.log([min, max])
+        }
+    </script>
+</html>

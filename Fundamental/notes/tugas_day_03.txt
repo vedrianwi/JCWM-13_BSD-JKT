@@ -1,0 +1,12 @@
+1. teruskan tugas market
+tambah stok 
+check apakah user beli melebihi stock => input dibuat nol
+check input error ==> alert transaksi batal input error
+not erro => tampilkan total belanjar => minta input pembayaran
+=> check pembayaran => total yg dibayar > input pembayara => kalau true alert kembalian : terima kasih
+2. menentukan season (winter, spring, snow, summer)
+minta input bulan
+chek season
+misal => bulan ke 4 => output summer
+
+3. quess random number

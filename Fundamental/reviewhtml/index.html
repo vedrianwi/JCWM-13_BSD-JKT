@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Review HTML</title>
+    </head>
+    <body>
+        <!-- ambil input -->
+        <p id="paraf-1" name='paraf-1'>Hello, ini paragraf</p>
+        <h1>Ini Title</h1>
+        <h2>ini sub title</h2>
+        <h1>ini title ke dua</h1>
+        <p id="paraf-2">ini paragraf ke dua</p>
+
+        <!-- ambil value -->
+        <div>
+            <h1>
+                content pertama
+                <p>paragraf di dalam h1</p>
+            </h1>
+            <h2>content kedua</h2>
+            <div>block no 1</div>
+            input text : <input type="text" value="nana" placeholder="ini input"/>
+            <input type="text" name="contoh" value="lala">
+            <input type="text" name="contoh" value="lili">
+            <input type="text" name="contoh" value="lolo">
+            <select>
+                <option value="1">dopdown1</option>
+                <option value="2">dopdown2</option>
+                <option value="3">dopdown3</option>
+                <option value="4">dopdown4</option>
+            </select>
+        </div>
+        <div>
+            <select>
+                <option value="1">dopdown1</option>
+                <option value="2">dopdown2</option>
+                <option value="3">dopdown3</option>
+                <option value="4">dopdown4</option>
+            </select>
+        </div>
+    </body>
+    <script>
+        // navigation in nearest elements
+        console.log(document.body.children[0])
+        console.log(document.body.children[1])
+        console.log(document.body.childNodes)
+
+        // searching element inside documents => getElement..., querySelector...
+        console.log(document.getElementById('paraf-1')) // return 1 element
+        console.log(document.getElementById('paraf-2'))
+        console.log(document.getElementById('paraf-3')) // null => element tidak ada / tidak ditemukan
+
+        console.log(document.getElementsByName('paraf-1')[0])
+        console.log(document.getElementsByTagName('h1'))
+        console.log(document.getElementsByTagName('h1')[0])
+
+        // ambil textContent, innerHTMML, or value
+        console.log(document.body.getElementsByTagName('div'))
+        console.log(document.body.getElementsByTagName('div')[0])
+        console.log(document.body.getElementsByTagName('div')[1])
+        console.log(document.body.getElementsByTagName('div')[0].children[0])
+        console.log(document.body.getElementsByTagName('div')[0].children[0].textContent) // ambil isi text
+        console.log(document.body.getElementsByTagName('div')[0].children[0].innerHTML) 
+
+        // value ? => <input/>
+        console.log(document.body.getElementsByTagName('div')[0].firstElementChild)
+        console.log(document.body.getElementsByTagName('div')[0].lastElementChild)
+        console.log(document.body.getElementsByTagName('div')[0].children[3])
+        console.log(document.body.getElementsByTagName('div')[0].lastElementChild.value)
+
+        // manipulasi html element => value, textContent, element => innerHTML atau insert method
+        // textContent
+        document.body.getElementsByTagName('h2')[0].textContent = 'Hello JavaScript'
+        document.body.getElementsByTagName('h2')[1].textContent += ' content pertama'
+
+        // value
+        document.body.getElementsByTagName('div')[0].lastElementChild.value = 'nani'
+
+        // // element
+        // document.body.getElementsByTagName('div')[0].innerHTML += `<div>div baru</div>`
+        // document.body.getElementsByTagName('div')[0].innerHTML = `<div>div baru</div>`
+
+        // multiple value
+        let input = document.getElementsByName('contoh')
+        console.log(input)
+        console.log(input[0].value)
+
+        // spread operator ...
+        let array1 = [1, 2, 3]
+        let array2 = array1 // reference copy
+        array1[1] = 0
+        array2[2] = 1
+        
+        console.log(array1)
+        console.log(array2)
+
+        // full copy
+        let array3 = [...array1]
+        array3[1] = 2
+        console.log(array3)
+
+        // insert method
+        // create element
+        let h1 = document.createElement('h1')
+        h1.textContent = 'Avenger'
+        h1.id = 'judul'
+        h1.style.backgroundColor = 'yellow'
+        h1.onclick = hello
+        // h1.innerHTML = `<div></div>`
+        console.log(h1)
+
+        document.body.getElementsByTagName('div')[0].prepend(h1)
+        // document.body.getElementsByTagName('div')[0].append(h1)
+        function hello () {
+            console.log('hello')
+        }
+
+    </script>
+</html>

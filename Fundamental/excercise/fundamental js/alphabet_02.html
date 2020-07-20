@@ -1,0 +1,36 @@
+<script>
+    while (true) {
+        // show welcome dialogue
+        alert(`
+        Welcome to my program 🎉, 
+        here you can generate alphabetic 🔡 letter for given range,
+        please input range from start to end ✌
+        `)
+
+        // prompt input
+        let loopInput = true
+        let start = '', end = '', result = ''
+        while (loopInput) {
+            start = parseInt(prompt('Start number :'))
+            end = parseInt(prompt('End number :'))
+            if (start < 1 || end >= 27 || start >= end) {
+                alert(`😢 Sorry, input out of range.`)
+            } else {
+                loopInput = false
+                mainLoop = true
+            }
+        }
+
+        // in JavaScript, letter has 97 as Unicode
+        for (let i = start; i <= end; i++) {
+            result += String.fromCharCode(i + 97 - 1) + ' , '
+        }
+
+        alert (`😎 Result : ${result}`)
+
+        // give use option to play again
+        let option = confirm('Want to play again 🙋‍♂️?')
+        if (option === false) break
+    }
+
+</script>

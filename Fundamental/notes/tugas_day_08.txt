@@ -1,0 +1,12 @@
+tugas day 08 :
+1. bikin feature register => username
+2. login
+3. database users = {username : '...', role : 'user'}
+4. menu admin = add, remove, edit, show, logout
+5. user show, buy, loguot
+6. ada opsi kemabli ke home => 
+	1. login
+	2. register
+	3. exit
+7. after register back to home
+8. logout

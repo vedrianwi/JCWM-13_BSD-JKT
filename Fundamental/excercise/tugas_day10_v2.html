@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise : Day 10</title>
+    </head>
+    <body>
+        <form style="width: 30%;">
+            <fieldset>
+                <!-- add legend -->
+                <legend>No 1. Personal data</legend>
+
+                <!-- input -->
+                <label for="name">Name : </label>
+                <input type="text" id='name'/><br><br>
+                <label for="age">Age &nbsp&nbsp&nbsp: </label>
+                <input type="number" id='age'/><br><br>
+                <label for='radio'>Gender </label>
+
+                <!-- radio button -->
+                <input type="radio" value="Male"/>Male
+                <input type="radio" value="Female"/>Female
+
+                <br><br>
+                <button type='button' onclick="getUserData()">Click Me!</button>
+            </fieldset>
+            <fieldset>
+                <legend>Output</legend>
+                <p id='output-1'></p>
+            </fieldset>
+        </form>
+    </body>
+    <script>
+        function getUserData () {
+            console.log('get user data.')
+
+            // get input data
+            let input = document.getElementsByTagName('input')
+            console.log(input)
+        }
+        console.log('done.')
+    </script>
+</html>

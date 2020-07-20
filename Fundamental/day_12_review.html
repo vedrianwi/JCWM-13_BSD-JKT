@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Review</title>
+    </head>
+    <style></style>
+    <body>
+        <!-- comment-1 -->
+        <div>
+            <div>Hello World</div>
+            <input type="text"/>
+            this is input
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <div>3</div>
+            </ul>
+        </div>
+    </body>
+    <script>
+        // navigation to nearby element
+        let topParent = document.documentElement // top parent HTML
+        let body = document.body
+        let head = document.head
+        console.log(topParent)
+        console.log(body)
+        console.log(head)
+
+        // node navigation
+        let bodyChildNode = document.body.childNodes // HTML collection
+        console.log(bodyChildNode)
+        console.log(bodyChildNode[2]) // access element inside collection
+        console.log(document.body.firstChild.nextSibling)
+        console.log(document.body.lastChild)
+
+        // element navigation
+        let bodyElementChild = document.body.children // HTML collection
+        console.log(bodyElementChild)
+        console.log(bodyElementChild[1])
+        console.log(document.body.lastElementChild)
+        console.log(document.body.firstElementChild.nextElementSibling)
+        console.log(document.body.firstElementChild.previousElementSibling)
+
+        // search element using getElementsBy*
+        let body2 = document.body
+        console.log(body2.getElementsByTagName('div'))
+        let ul = document.body.getElementsByTagName('ul')
+        console.log(ul)
+        console.log(ul[0].children)
+        console.log(ul[0].getElementsByTagName('li'))
+
+        // innerHTML vs textContent
+        console.log(ul[0].innerHTML)
+        console.log(ul[0].textContent)
+        ul[0].innerHTML += `<div>Hello</<div>`
+        // ul[0].innerHTML = '' // clear all element inside <ul></ul>
+        console.log(ul[0])
+
+        // create element
+        let div = document.createElement('div')
+        div.textContent = 'new div'
+        console.log(div)
+
+        // inserting
+        ul[0].append(div)
+        // ul[0].after(div)
+
+        // insertAdjacentHTML/Text/Element
+        ul[0].insertAdjacentHTML('afterbegin', '<div>after element</div>')
+
+        // Array.forEach => looping or iteration purpose
+        let array = [1, 'test', false, true, 12, 'ok']
+        for (let i = 0; i < array.length; i++) {
+            let out = array[i]*2
+            console.log(out)
+        }
+
+        array.forEach((item) => {
+            let out = item*2
+            console.log(out)
+        })
+
+        array.forEach(function (value, index) {
+            let out = value*2
+            console.log(out)
+        })
+
+        // map and filter
+        // map is used to modified an array => give return a new modified array
+        let newArray = array.map((item) => 'ola' + item)
+        console.log(newArray)
+
+        let filterArray = array.filter((item) => item === 'ok')
+        let filterArray2 = array.filter((item) => typeof(item) === "number")
+        console.log(filterArray)
+        console.log(filterArray2)
+        console.log(array)
+
+        // string
+        "double"
+        'single'
+        `backtick`
+    </script>
+</html>

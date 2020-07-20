@@ -1,0 +1,69 @@
+<script>
+    let compWin = 0, userWin = 0
+    while (true) {
+        // define rock, scissor, and paper represent value
+        alert(`
+        Welcome to my game 🎮,
+        here we will play 🗻 rock, scissor ✂, and paper 📄
+        and you will play again me.  
+        let\'s begin 🌠.
+        `)
+    
+        // initialize parameter
+        let comp = Math.ceil(Math.random() * 3)
+        
+        // request user input
+        let message = `
+        Give number that represent 🗻 rock, scissor ✂, and paper 📄
+        Where : 
+        1 is equal with rock
+        2 is equal with scissor
+        3 is equal with paper`
+    
+        // check user input
+        let inputLoop = true, user
+        while (inputLoop) {
+            user = parseInt(prompt(message))
+            if (user === NaN || user < 1 || user > 3) {
+                alert(`😢 Sorry, input wrong.`)
+            } else {
+                inputLoop = false
+            }
+        }
+        // let user
+        // user = parseInt(prompt(message))
+        // if (user === NaN || user < 1 || user > 3) break
+
+        // compare user and comp
+        if (user === 1 && comp === 2) {
+            userWin += 1
+            alert (`Rock vs Scissor, You win 🎉.`)
+        } else if (user === 1 && comp === 3) {
+            compWin += 1
+            alert (`Rock vs Paper, 👎 Sorry, you lose.`)
+        } else if (user === 2 && comp === 1) {
+            compWin += 1
+            alert (`Scissor vs Rock, 👎 Sorry, you lose.`)
+        } else if (user === 2 && comp === 3) {
+            userWin += 1
+            alert (`Scissor vs Paper, You win 🎉.`)
+        } else if (user === 3 && comp === 1) {
+            userWin += 1
+            alert (`Paper vs Rock, You win 🎉.`)
+        } else if (user === 3 && comp === 2) {
+            compWin += 1
+            alert (`Paper vs Scissor, 👎 Sorry, you lose.`)
+        } else {
+            alert (`Tie, you choose the same with me. 👏`)
+        }
+
+        // play confirmation
+        let conf = confirm(`
+        🏆 win : ${userWin}
+        👎 lose : ${compWin}
+        Did you want to play again 🤔?
+        `)
+        if (conf === false) break
+    }
+    // console.log('done')
+</script>

@@ -1,0 +1,26 @@
+1. Simple calculator using command prompt
+input user -> angka 1 -> convert ke number
+input user -> angke 2 -> convert ke number
+do arhitmetic operator (+, -, /, %, **)
+alert result
+
+2. calculate area triangle (1/2 a x t) and circular (pi x radius ** 2)
+// triangle
+input user a and t
+alert luas area
+// circular 
+input radius
+
+3. Simple market
+alert menu -> buah2an plus harga
+1. apple harga 3000
+2. mangga harga 10000
+3. ....
+
+propmt user input -> total buah -> aplle brp, mangga brp
+
+lakukan kalkulasi total harga semua
+
+alert total harga --> oke
+
+confrimasi -> message bebas. -> selesai

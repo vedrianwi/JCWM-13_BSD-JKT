@@ -1,0 +1,20 @@
+tugas day 13 : 
+1. nerusin market, bikin database buat nampung cart
+tampilkan cart to new table : user cart
+add action button => delete
+
+2. bikin function
+If　a = 1, b = 2, c = 3 ... z = 26
+Then l + o + v + e = 54
+and f + r + i + e + n + d + s + h + i + p = 108
+
+love&frindship("love") => 54
+
+3. buat function to convert number (<100) to word
+100 => one hundred
+15 => fifth teen
+25 => twenty five 
+
+4. function to do arthitmatic operator (plus, minus, divide, modulus, multiply)
+one plus two => 3
+ten plus one => 11

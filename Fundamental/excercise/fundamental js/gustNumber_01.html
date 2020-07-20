@@ -1,0 +1,24 @@
+<script>
+    // range number between 1 to 5
+    let randomNumber = (Math.round(Math.random() * 5)) + 1
+    console.log(randomNumber)
+    let userNumber = parseInt(prompt('Please input your guess number! (between 1 to 5)'))
+
+    if (randomNumber === userNumber) {
+        alert(`correct.`)
+    } else {
+        alert(`sorry it does\'t right. the right number is ${randomNumber}`)
+    }
+
+    // switch(randomNumber) {
+    //     case userNumber :
+    //         alert(`correct.`)
+    //         break
+    //     default :
+    //         alert(`sorry it does\'t right. the right number is ${randomNumber}`)
+    // }
+
+    // key === value --> data type must be same
+    // compare key and value
+
+</script>

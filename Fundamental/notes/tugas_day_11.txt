@@ -1,0 +1,8 @@
+1. timer : tampilakn AM atau PM
+setiap 20 detik background color di ganti => urutan warna bebas
+sorce color : https://flatuicolors.com/
+2. to app => setaip nambah list di kasih button delete
+kalau bisa button berfungsi
+3. bikin formulir input data  diri
+tampilkan dalam bentuk tabel
+ketika tambah data diri, baris table bertambah

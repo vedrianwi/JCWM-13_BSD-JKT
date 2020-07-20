@@ -1,0 +1,10 @@
+console.log('Hello World 🌍')
+console.log('My name is alee')
+
+console.log('My name is Ali')
+console.log('age 25')
+console.log('male')
+console.log('I live in BSD')
+console.log('Astronomy')
+console.log('I love dancing')
+console.log('Programming is fun')

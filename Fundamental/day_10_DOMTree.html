@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>DOM Tree and Manipulation</title>
+    </head>
+    <body> 
+        <!-- comment -->
+        <div id='hello' name='greet'>
+            <!-- node comment -->
+            Hello
+        </div>
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+        <div class="text">World</div>
+        <div class="text apple">Apple</div>
+        <div id="test"></div>
+    </body>
+    <script>
+        // HOW to access HTML DOM
+        // TOP NODES :
+        let html = document.documentElement
+        console.log(html)
+
+        let body = document.body
+        console.log(body)
+
+        let head = document.head
+        console.log(head)
+
+        // node vs element
+        // node include comment and text, element => <tag><tag/>
+
+        // childNodes
+        let bodyNode = document.body.childNodes // collection list of node
+        console.log(bodyNode)
+        console.log(document.body.firstChild)
+        console.log(document.body.lastChild)
+
+        /* Element-only navigation, 
+        Navigation properties listed above refer to all nodes. For instance, 
+        in childNodes we can see both text nodes, element nodes, and even comment 
+        nodes if there exist.
+        */
+
+        let bodyElement = document.body.children // get all elements inside body
+        console.log(bodyElement)
+        console.log(document.body.firstElementChild)
+        console.log(document.body.lastElementChild)
+        console.log(document.body.firstElementChild.nextElementSibling)
+        console.log(document.body.firstElementChild.previousElementSibling)
+
+        // Searching: getElement*, querySelector*
+        // get element by id
+        let div = document.getElementById('hello') // return single element
+        console.log(div)
+
+        // get collection using :
+        console.log(document.getElementsByTagName('div')) // return collection element
+        console.log(document.getElementsByTagName('div')[1]) // return collection element
+        console.log(document.getElementsByClassName('apple')) // return collection element
+        console.log(document.getElementsByName('greet')) // return collection node
+
+        // How to manipulate element in HTML
+        /* Creating an element
+        1. document.createElement(tag), Creates a new element node with the given tag:
+        2. document.createTextNode(text), Creates a new text node with the given text:
+        */
+       let div2 = document.createElement('div') // create <div></div>
+       div2.innerHTML = `<b>new element</b>`
+       document.getElementById('hello').append(div2) // insert element
+       // before, after, prepend
+
+        // access text inside element => innerHTML or textContent
+        console.log(document.getElementById('hello').innerHTML)
+        console.log(document.getElementById('hello').textContent)
+
+        // innerHTML can be modified
+        document.getElementsByClassName('text')[0].innerHTML = 'Lemon'
+        
+
+        /* insertAdjacentHTML/Text/Element
+        For that we can use another, pretty versatile method: elem.insertAdjacentHTML(where, html).
+        The first parameter is a code word, specifying where to insert relative to elem. 
+        Must be one of the following:
+         - "beforebegin" – insert html immediately before elem,
+         - "afterbegin" – insert html into elem, at the beginning,
+         - "beforeend" – insert html into elem, at the end,
+         - "afterend" – insert html immediately after elem.
+        */
+       let div3 = document.getElementById('test')
+       div3.insertAdjacentHTML('beforebegin', '<p>Hello</p>')
+       div3.insertAdjacentHTML('afterend', '<p>Bye</p>')
+
+        /* The call to document.write(html) writes the html into page “right here and now”.
+        The call to document.write only works while the page is loading.
+        */
+       document.write('document write')
+
+       // get value/ nodeValue/ data/ textContent
+    </script>
+</html>

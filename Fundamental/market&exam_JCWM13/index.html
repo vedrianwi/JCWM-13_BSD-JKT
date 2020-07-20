@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Market v1</title>
+    </head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <body>
+        <form>
+            <h1 id="title">Welcome to Happy Shopping</h1>
+            <fieldset>
+                <legend>Login or register</legend>
+                <!-- input -->
+                <input type="text" id="username" placeholder="Username"/>
+                <input type="password" id="password" placeholder="Password"/>
+
+                <!-- button login -->
+                <button type="button" id="button-login" onclick="login()">Login</button>
+                <button type="button" id="button-register" onclick="register()">Register</button>
+                <button type="button" id="button-logout" onclick="logout()" hidden>Logout</button>
+            </fieldset>
+            <fieldset id="input-data" hidden>
+                <legend>Input Data</legend>
+                <!-- input -->
+                <input type="text" id="pruduct-name" placeholder="Product name"/>
+                <input type="number" id="price" placeholder="Price"/>
+                <input type="number" id="stock" placeholder="Stock"/>
+                <input type="text" id="product-image" placeholder="Image"/>
+
+                <!-- option -->
+                Category :
+                <select id="category">
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Vegetable">Vegetable</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <!-- submit button -->
+                <button type="button" onclick="addProduct()">Add Product ➕</button>
+            </fieldset>
+            <fieldset id="filter" hidden>
+                <legend>Filter</legend>
+                <!-- filter by name -->
+                <input type="text" id="filter-name" placeholder="Search by name"/>
+                <button type="button" onclick="filterByName()">Search</button>
+
+                <!-- filter by category -->
+                <br> Filter by :
+                <select id="filter-category">
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Vegetable">Vegetable</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Other">Other</option>
+                </select>
+                <button type="button" onclick="filterByCategory()">Filter By Category</button>
+                
+                <!-- filter by price -->
+                <br>
+                <input type="number" id="min-price" placeholder="min price"/>
+                <input type="number" id="max-price" placeholder="max price"/>
+                <button type="button" onclick="filterByPrice()">Filter By Price</button>
+
+                <!-- clear button -->
+                <button type="button" onclick="clearFilter()">Clear</button>
+            </fieldset>
+            <fieldset id="table-product" hidden>
+                <legend>Table Product</legend>
+                <!-- create table for product -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+            <fieldset id="table-cart" hidden>
+                <legend>Cart</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="total-cart">Total : </p>
+                <br>
+                <button type="button" id="button-check-out" onclick="checkOut()" disabled>Check Out 📦</button>
+            </fieldset>
+            <fieldset id="receipt" hidden>
+                <legend>Transaction Receipt</legend>
+                <p id="transaction-receipt"></p>
+                
+                <!-- input payment -->
+                <input type="number" id="user-money" placeholder="Input yout money"/>
+                <button type="button" id="button-pay" onclick="pay()" disabled>Pay 💲</button>
+            </fieldset>
+            <h1 id="final-output"></h1>
+            <button type="button" id="button-buy-again" onclick="buyAgain()" hidden>Buy Again 🛒?</button>
+            <fieldset id='history' hidden>
+                <legend>Transaction histories</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Username</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+        </form>
+    </body>
+    <script src="./database.js"></script>
+    <script src="./admin.js"></script>
+    <script src="./user.js"></script>
+    <script src="./script.js"></script>
+</html>

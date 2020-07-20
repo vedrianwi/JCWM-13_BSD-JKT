@@ -1,0 +1,83 @@
+1st method
+0. string
+1. to lowercasse
+2. ubah ke array
+3. ubah ke charcode => a = 97, b=98, c=99, d = 100, ...
+4. dcde => [4, 3, 4, 5] => jumlahkan isinya
+5. a. for loop b. reduce
+
+"loVe" => "love" => ["l", "o", "v", "e"] => [12,15, ..., 5] => [].reduce((a, b) => a+b)) // for loop a+= 1 ==> a = a + 1
+a = 4
+a = 8
+a += 5 => 8 + 5
+
+innerhtml = ''
+append => +=
+ 
+2nd method
+1. string => lowercase
+2. looping => "str".chartCodeAt(index) => unicode => -96
+
+let result = 0;
+for (let i = 0; i < str.length; i++) {
+	result += str.tolwercase().chartCodeAt(i) - 96
+}
+
+
+String.fromCharCode(unicode)=> 97 = a
+String.length
+
+// array vs object
+[] => ambil data pake index => arr[0], arr[1], arr[2][3]
+{} => ambil data pake key/properties => obj.key / obj.prop => obj.name, obj.school || obj["name"], obj["school"]
+
+// array => looping => method / for loop 
+method => forEach, map, filter
+for loop => for(condition) { ...statement }
+...spread operator => copy element di dalam array => [...arr]
+
+// object => for (let key in obj) {...statement}
+obj[key]
+let key in obj => untuk ngecek apakah ada key didalam object
+let obj = {
+	name : "ali",
+	age : 25
+}
+
+console.log(name in obj) => true or false
+console.log(obj)
+console.log(obj.name)
+console.log(obj["name"])
+
+for (let key in obj{
+	console.log(key)
+}
+
+for (let i = 0; i < arr.length; i++) {
+	console.log(arr[i])
+}
+
+
+1. funct loveFriendship, input string, output = jumlah string , a = 1, b=2, c=3, ..., l+o+v+e = 54
+2. input => string => upper, lower, ""
+3. for
+4. char value ?, l = ?, o = ?
+5. dict {a : 1, b : 2, ...} => dict[str[0]] => dict[l] => dict.l // charcode => a = 97 - 96 = 1, b = 98 - 96 = 2
+6. jumlahkan
+
+
+1 = "one", 2 = "two", ....
+11, 12, 20, 30, 40, 50, 60, 70
+
+four => fourt
+five => fifth
+11 => eleven
+12 => tweleve
+three => thirt
+14 => fourteen
+41 => fourty one
+
+
+four = 4
+five = 5
+four minus five

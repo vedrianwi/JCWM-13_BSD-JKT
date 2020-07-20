@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Market v1</title>
+    </head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            height: 50px;
+            min-width: 25px;
+        }
+    </style>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Input Data</legend>
+                <!-- input -->
+                Product Name : <input type="text" id="pruduct-name"/>
+                Price : <input type="number" id="price"/>
+                Stock : <input type="number" id="stock"/>
+                Image : <input type="text" id="product-image"/>
+
+                <!-- option -->
+                Category :
+                <select id="category">
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Vegetable">Vegetable</option>
+                    <option value="Fruit">Fruit</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <!-- submit button -->
+                <button type="button" onclick="addProduct()">Add Product ➕</button>
+            </fieldset>
+            <fieldset>
+                <legend>Table Product</legend>
+                <!-- create table for product -->
+                <table id="table-product">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+            <fieldset>
+                <legend>Cart</legend>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <button type="button" onclick="checkOut()">Check Out 📦</button>
+            </fieldset>
+            <fieldset>
+                <legend>Transaction Receipt</legend>
+                <p id="transaction-receipt"></p>
+                
+                <!-- input payment -->
+                payment : <input type="number" id="user-money"/>
+                <button type="button" onclick="pay()">Pay 💲</button>
+            </fieldset>
+            <h1 id="final-output"></h1>
+        </form>
+    </body>
+    <script>
+        let products = [
+            {
+                name : "Apple",
+                image : "https://i5.walmartimages.ca/images/Enlarge/094/514/6000200094514.jpg",
+                category : "Fruit",
+                stock : 50,
+                price : 15000
+            },
+            {
+                name : "Milk",
+                image : "https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/7786149/2340/1560/m1/fpnw/wm0/17-milk-box-mockup-.png?1582099260&s=482c6ae842be9bfb2522e0029ca9c9b4",
+                category : "Drink",
+                stock : 100,
+                price : 35000
+            },
+            {
+                name : "Lemon",
+                image : "https://i5.walmartimages.ca/images/Large/094/504/6000200094504.jpg",
+                category : "Fruit",
+                stock : 65,
+                price : 5000
+            },
+            {
+                name : "Tomato",
+                image : "https://cdn.shopify.com/s/files/1/0244/4961/3905/products/tomato_grande.jpg?v=1576807420",
+                category : "Fruit",
+                stock : 35,
+                price : 3500
+            },
+        ]
+
+        let cart = []
+
+        let totalPayment = 0
+
+        class Product {
+            constructor(_name, _image, _category, _stock, _price) {
+                this.name = _name
+                this.image = _image
+                this.category = _category
+                this.stock = _stock
+                this.price = _price
+            }
+        }
+
+        // show product
+        function showProduct (data) {
+            let tbody = document.getElementsByTagName('table')[0].tBodies[0]
+
+            // do iteration
+            let result = []
+            for (let i = 0; i < data.length; i++) {
+                let tr = `<tr><td>${i+1}</td>`
+                // do iteration inside an object
+                for (let key in data[i]) {
+                    if (key === 'image') {
+                        tr += `<td><img src="${data[i][key]}" alt="product-image" width="100px"/></td>`
+                    } else {
+                        tr += `<td>${data[i][key]}</td>`
+                    }
+                }
+                tr += `<td><button type="button" onclick="addToCart(${i})"">Add To Cart 🛒</button></td></tr>`
+                result.push(tr)
+            }
+            console.log(result)
+
+            // show data
+            tbody.innerHTML = result.join('')
+        }
+
+        // add product
+        function addProduct () {
+            // get all input value
+            let input = document.forms[0].elements[0].getElementsByTagName('input'),
+            name = input[0].value,
+            price = parseInt(input[1].value),
+            stock = parseInt(input[2].value),
+            image = input[3].value
+
+            // get value from select
+            let category = document.getElementById('category').value
+            console.log(category)
+            console.log(input)
+
+            // check user input
+            if (name === '' || image === '' || isNaN(price) || isNaN(stock)) {
+                alert('Please fill all input form !')
+                return null
+            }
+
+            // add new product to database
+            products.push(new Product(name, image, category, stock, price))
+
+            // show an updated data
+            showProduct(products)
+
+            // reset input value
+            for (let element of input) {
+                element.value = ''
+            } 
+        }
+
+        // add to cart
+        function addToCart (index) {
+            let product = products[index], cartIndex
+
+            // check if product already exist in cart
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].name === product.name) { // product already exits
+                    cartIndex = i
+                }
+            }
+
+            // add to cart database
+            if (cartIndex !== undefined) {
+                cart[cartIndex].quantity += 1
+                cart[cartIndex].total = cart[cartIndex].quantity * product.price
+            } else {
+                product.quantity = 1
+                product.total = product.price
+                delete product.stock
+                cart.push(product)
+            }
+
+            console.log(cart)
+
+            // show cart
+            showCart(cart)
+        }
+
+        // show user cart
+        function showCart (data) {
+            let tbody = document.getElementsByTagName('table')[1].tBodies[0]
+
+            // do iteration
+            let result = []
+            for (let i = 0; i < data.length; i++) {
+                let tr = `<tr><td>${i+1}</td>`
+                for (let key in data[i]) {
+                    if (key === 'image') {
+                        tr += `<td><img src="${data[i][key]}" alt="product-image" width="100px"/></td>`
+                    } else if (key === 'price') {
+                        null
+                    } else {
+                        tr += `<td>${data[i][key]}</td>`
+                    }
+                }
+                tr += `<td><button type="button" onclick="deleteCart(${i})">Delete ❌</button></td></tr>`
+                result.push(tr)
+            }
+
+            // show to DOM
+            tbody.innerHTML = result.join('')
+        }
+
+        // delete cart item
+        function deleteCart (index) {
+            // check quantity
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1
+                cart[index].total = cart[index].quantity * cart[index].price
+            } else {
+                // delete cart from cart database
+                cart.splice(index, 1)
+            }
+
+            // show an updated cart
+            showCart(cart)
+        }
+
+        // check out
+        function checkOut () {
+            // transaction receipt
+            let receipt = document.getElementById('transaction-receipt'), result = ''
+            for (let i = 0; i < cart.length; i++) {
+                result += `${i+1}. ${cart[i].name} => ${cart[i].quantity} x ${cart[i].price} = ${cart[i].total}<br>`
+                totalPayment += cart[i].total
+            }
+
+            // show result
+            result += '----------------------------------<br>'
+            result += `Total payment = ${totalPayment}`
+
+            // show receipt
+            receipt.innerHTML = result
+        }
+
+        // user payment
+        function pay () {
+            // get user money
+            let userMoney = parseInt(document.getElementById('user-money').value)
+
+            // check input
+            if (isNaN(userMoney)) {
+                alert('Sorry, input wrong.')
+                return
+            }
+
+            // check user payment
+            let finalOutput = document.getElementById('final-output')
+            if (userMoney < totalPayment) {
+                alert('Sorry 😭, Not Enough Money.')
+            } else if (userMoney > totalPayment) {
+                finalOutput.innerHTML = `Thank you 🙏. <br> Your refund = ${userMoney - totalPayment}`
+            } else {
+                finalOutput.innerHTML = 'Thank you 🙏.'
+            }
+
+            // ask user confirmation
+            let confirmation = confirm('Do you want to buy again ?')
+            if (confirmation === true) {
+                totalPayment = 0
+                finalOutput.innerHTML = ''
+                receipt.innerHTML = ''
+                userMoney.value = ''
+                
+                // delete all item inside user cart
+                cart = []
+
+                // show an updated cart
+                showCart(cart)
+            }
+
+        }
+
+        // call or invoke the function
+        showProduct(products)
+    </script>
+</html>

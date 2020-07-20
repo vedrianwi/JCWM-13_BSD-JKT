@@ -1,0 +1,15 @@
+<script>
+    // get user input
+    let word = prompt(`Input a word or sentence 🔊`)
+
+    // reverse string using loop
+    let result = ''
+    for (let i = word.length; i >= 0; i--) {
+        result += word.charAt(i)
+    }
+
+    alert(`
+    We reverse your word
+    from ${word} to ${result}
+    `)
+</script>

@@ -1,0 +1,62 @@
+<script>
+    let month = parseInt(prompt('input month to see the season'))
+
+    // if...else...
+    if (month === 1 || month === 2 || month === 3) {
+        alert('Winter ❄')
+    } else if (month === 4 || month === 5 || month == 6) {
+        alert('Spring ♨')
+    } else if (month === 7 || month === 8 || month === 9) {
+        alert('Summer 🏖')
+    } else if (month === 10 || month === 11 || month === 12) {
+        alert('Autumn 🍂')
+    } else {
+        alert('Something went wrong 😔.')
+    }
+
+    // switch
+    switch(true) {
+        case (month === 1 || month === 2 || month === 3) :
+            alert('Winter ❄')
+            break
+        case (month === 4 || month === 5 || month === 6) :
+            alert('Spring ♨')
+            break
+        case (month === 7 || month === 8 || month === 9) :
+            alert('Summer 🏖')
+            break
+        case (month === 10 || month === 11 || month === 12) :
+            alert('Autumn 🍂')
+            break
+        default : 
+            alert('Something went wrong 😔.')
+    }
+
+    /*
+    switch (key) {
+        case value:
+            // execute when key === value
+            break;
+    
+        default:
+            break;
+    }
+    */
+
+    // 2nd method
+    switch(month) {
+        case 1 :
+        case 2 :
+        case 3 :
+            alert('Winter ❄')
+            break
+        case 4 :
+        case 5 :
+        case 6 :
+            alert('Spring ♨')
+            break
+        default :
+            alert('Something went wrong 😔.')
+    }
+
+</script>

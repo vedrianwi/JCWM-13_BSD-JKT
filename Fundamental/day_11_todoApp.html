@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-do App</title>
+    </head>
+    <style>
+        #container {
+            background-color: #1abc9c;
+            text-align: center;
+            width: 40%;
+            height: 50vh;
+            margin-top: 10%;
+            padding: 2%;
+        }
+        ul li {
+            text-align: left;
+        }
+    </style>
+    <body>
+        <center>
+            <div id='container'>
+                <h1>To-do App</h1>
+                <!-- get input -->
+                <input type="text" id="list"/>
+                <button type="button" onclick="addList()">Add</button>
+                
+                <!-- display list using ul(unordered list) -->
+                
+                <ul>
+                    <li>Buy Apple 🍎</li>
+                    <li>Eat 🍴</li>
+                    <li>Learn JavaScript 👨‍💻</li>
+                </ul>
+            </div>
+        </center>
+    </body>
+    <script>
+        function add () {
+            let input = document.getElementById('list').value
+            let ul = document.getElementsByTagName('ul')[0]
+            console.log(ul)
+
+            // 1sr method => innerHTML
+            ul.innerHTML += `<li>${input}</li>`
+
+            // 2nd method => createElement
+            let li = document.createElement('li') // <li></li>
+            li.textContent = input // <li>input</li>
+            ul.append(li)
+        }
+
+        // store all value in database => Array
+        let list = []
+        function addList () {
+            let input = document.getElementById('list').value
+            list.push(input)
+            console.log(list)
+            showList()
+        }
+
+        function showList () {
+            let listElementsCollection = list.map(item => item = `<li>${item}</li>`)
+            console.log(listElementsCollection)
+
+            // show list as html element inside ul
+            let ul = document.getElementsByTagName('ul')[0]
+            // ul.innerHTML = ''
+
+            // listElementsCollection.forEach(item => ul.insertAdjacentHTML('beforeend', item))
+            ul.innerHTML = listElementsCollection.join('')
+        }
+
+        // innerHTML vs textContent
+        console.log(document.getElementsByTagName('ul')[0].innerHTML)
+        console.log(document.getElementsByTagName('ul')[0].textContent)
+
+        // innerHTML can be modified
+        document.getElementsByTagName('ul')[0].innerHTML += `<br><strong>Hello</strong>`
+
+        // insert method : append, before, prepend, after, replaceWith
+        let div = document.createElement('div')
+        let ul = document.getElementsByTagName('ul')[0]
+        div.innerHTML = 'Hello'
+        console.log(div)
+        ul.append(div)
+
+        // insertAdjacentHTML/Text/Element
+        ul.insertAdjacentHTML('beforeend', '<div>hello</div>')
+
+        // remove element
+        div.remove()
+    </script>
+</html>

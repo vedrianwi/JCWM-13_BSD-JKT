@@ -1,0 +1,5 @@
+tugas day 14
+buat tombol check out
+tampilkan nota pembelian
+input payment
+tampilkan message

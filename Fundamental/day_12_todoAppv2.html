@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-do App v2</title>
+    </head>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        #container {
+            background-color: white;
+            border-radius: 5px;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20);
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 70%;
+            border: 1px solid black;
+            margin-right: 10px;
+        }
+        ul {
+            padding: 10px 20px;
+        }
+        ul li {
+            margin-top: 10px;
+        }
+    </style>
+    <body>
+        <div id="container">
+            <h1>To-do List</h1>
+
+            <!-- input -->
+            <input type="text" id="todo" autofocus/>
+            <button type="button" onclick="addList()">Add ➕</button>
+
+            <!-- output -->
+            <ul id="output"></ul>
+        </div>
+    </body>
+    <script>
+        let todoList = [
+            'Learn Fundamental JavaScript 👩‍💻',
+            'Go to market : buy Mango 🛒',
+            'Do Homework 🏠'
+        ]
+
+        // show list using innerHTML method
+        let ul = document.getElementById('output')
+
+        function showList () {
+            console.log('show list')
+            // do iteration
+            let output = []
+            for (let i = 0; i < todoList.length; i++) {
+                output.push(`<li>${todoList[i]}<button type="button" onclick="remove(${i})">❌</button></li>`)
+            }
+            console.log(output)
+    
+            // show an updated data
+            ul.innerHTML = output.join('')
+        }
+
+        // add new to-do list
+        function addList () {
+            // get value from input
+            let todo = document.getElementById('todo').value
+
+            // add new todo to todoList array
+            todoList.push(todo)
+            
+            // show an updated list
+            showList()
+        }
+
+        // remove list
+        function remove (index) {
+            todoList.splice(index, 1)
+
+            // show an updated list
+            showList()
+        }
+
+        // invoke or call the function
+        showList()
+    </script>
+</html>

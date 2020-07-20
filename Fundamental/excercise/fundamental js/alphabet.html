@@ -1,0 +1,39 @@
+<script>
+    while (true) {
+        // show welcome dialogue
+        alert(`
+        Welcome to my program 🎉, 
+        here you can generate alphabetic 🔡 letter for given range,
+        please input range from start to end ✌
+        `)
+
+        // prompt input
+        let start = parseInt(prompt('Start number :'))
+        let end = parseInt(prompt('End number :'))
+
+        // check input range
+        if (start < 1 || end >= 27) {
+            alert(`😢 Sorry, input out of range.`)
+            break
+        }
+
+        // in JavaScript, letter a has 97 as Unicode
+        // a => 97
+        // b => 98
+        // c => 99
+        // d => 100
+        let result = '' // declare variable called result with empty string value
+        for (let i = start; i <= end; i++) {
+            result += String.fromCharCode(i + 97 - 1) + ' , '
+            //result = result + String.fromCharCode(i + 97 - 1) + ' , '
+        }
+
+        alert (`😎 Result : ${result}`)
+
+        // give use option to play again
+        let option = confirm('Want to play again 🙋‍♂️?') // ok : true, cancel : false
+        if (option === false) break
+        // result = '' // reset result value
+    }
+
+</script>

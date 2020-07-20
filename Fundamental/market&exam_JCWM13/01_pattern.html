@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>1. Patttern</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                padding: 50px;
+            }
+
+            input {
+                margin: 10px 0px;
+                padding: 5px;
+                width: 200px;
+            }
+
+            button {
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Drawing Tools</h1>
+        <ol>
+            <li>Persegi</li>
+            <li>Segitiga siku-siku rata kiri</li>
+            <li>Segitiga siku-siku rata kanan</li>
+        </ol>
+
+        <!-- input -->
+        <input type="number" id="draw-type" placeholder="tipe"/>
+        <input type="number" id="draw-size" placeholder="ukuran"/>
+
+        <!-- button -->
+        <button type="button" id="draw">Draw</button>
+
+        <!-- output -->
+        <br>
+        <div id="output"></div>
+    </body>
+    <script>
+        function square (size) {
+            let result = ''
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    result += `&nbsp*&nbsp`
+                }
+                result += `<br>`
+            }
+            return result
+        }
+
+        function triangleOne (size) {
+            let result = ''
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j <= i; j++) {
+                    result += `&nbsp*&nbsp`
+                }
+                result += `<br>`
+            }
+            return result
+        }
+
+        function triangleTwo (size) {
+            let result = ''
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    if (j >= (size - i - 1)) {
+                        result += `&nbsp*&nbsp`
+                    } else {
+                        result += `&nbsp&nbsp&nbsp&nbsp`
+                    }
+                }
+                result += `<br>`
+            }
+            return result
+        }
+
+        document.getElementById('draw').addEventListener('click', function () {
+            // get input value
+            let type = parseInt(document.getElementById('draw-type').value),
+            size = parseInt(document.getElementById('draw-size').value),
+            draw
+
+            // check input
+            if (type === 1) {
+                draw = square(size)
+            } else if (type === 2) {
+                draw = triangleOne (size)
+            } else {
+                draw = triangleTwo(size)
+            }
+
+            // show output
+            document.getElementById('output').innerHTML = draw
+        })
+
+    </script>
+</html>

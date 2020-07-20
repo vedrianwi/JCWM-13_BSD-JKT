@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendar</title>
+    </head>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            display: flex;
+            margin-top: 10%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            height: 50px; width: 50px;
+            text-align: center;
+        }
+        th {
+            background-color: #0984e3;
+            color: white;
+        }
+        table {
+            box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20);
+        }
+    </style>
+    <body>
+        <input type="month" /><br>
+        <button type="button" onclick="generate()">GENERATE</button>
+        <h1>Month, Year</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>SU</th>
+                    <th>MO</th>
+                    <th>TU</th>
+                    <th>WE</th>
+                    <th>TH</th>
+                    <th>FR</th>
+                    <th>ST</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </body>
+    <script>
+        function generateCalendar (year, month) {
+            // gather all information
+            let date = new Date(year, month-1) // month in JavaScript start at 0
+            let startDate = date.getDay() + 1 // get first day in that month start at ...?th day in week
+            let totalDay = new Date(year, month, 0).getDate()
+            
+            // do loop to create element
+            let result = [], column = 1, day = 1
+            for (let i = 0; i < 6; i++) { // row
+                let tr = document.createElement('tr') // <tr></tr>
+                if (day > totalDay) continue
+                for (let j = 0; j < 7; j++) { // column
+                    let td = document.createElement('td') // <td></td>
+
+                    // check value of column
+                    if (column >= startDate && day <= totalDay) {
+                        td.textContent = day // <td>${day}</td>
+                        tr.append(td) //<tr><td>${day}</td><tr>
+                        if (day === new Date().getDate()) td.style.backgroundColor = '#e84393'
+                        day++
+                    } else {
+                        tr.append(td) //<tr><td></td></tr>
+                    }
+                    column++
+                }
+                result.push(tr)
+            }
+            console.log(result)
+
+            // append element tr to table body
+            let tbody = document.getElementsByTagName('table')[0].tBodies[0]
+            tbody.innerHTML = ''
+            tbody.append(...result)
+        }
+
+        function generateCalendarV2 (year, month) {
+            // gather all information
+            let date = new Date(year, month-1) // month in JavaScript start at 0
+            let startDate = date.getDay() + 1 // get first day in that month start at ...?th day in week
+            let totalDay = new Date(year, month, 0).getDate()
+            
+            // do loop to create element
+            let result = "", column = 1, day = 1
+            for (let i = 0; i < 6; i++) {
+                if (day > totalDay) continue
+                result += "<tr>"
+                for (j = 0; j < 7; j++) {
+                    if (column >= startDate && day <= totalDay) {
+                        result += `<td>${day}</td>`
+                        day++
+                    } else {
+                        result += `<td></td>`
+                    }
+                    column++
+                }
+                result += "</tr>"
+            }
+            console.log(result)
+
+            // append element tr to table body
+            document.getElementsByTagName('table')[0].tBodies[0].innerHTML = result
+        }
+
+        function generate () {
+            let inputDate = document.getElementsByTagName('input')[0].value.split('-'),
+            year = parseInt(inputDate[0]),
+            month = parseInt(inputDate[1])
+
+            let arrMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'August', 'Oct', 'Nov', 'Dec']
+            document.getElementsByTagName('h1')[0].textContent = `${arrMonth[month-1]}, ${year}`
+            
+            generateCalendar(year, month)
+        }
+
+        // call or invoke the function
+        // generateCalendar(2020, 5)
+
+
+        // spread operator
+        // let arr1 = [1, 2, 3, 4, 5]
+        // let arr2 = arr1 // reference copy
+        // arr1[3] = 10
+        // arr2[1] = 0
+
+        // let arr3 = [...arr1] // full copy : ...spread operator
+        // arr1[4] = 15
+        // console.log(arr1)
+        // console.log(arr2)
+        // console.log(arr3)
+    </script>
+</html>

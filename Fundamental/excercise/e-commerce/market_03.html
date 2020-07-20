@@ -1,0 +1,86 @@
+<script>
+    main : while (true) {
+        // Simple Market V.02
+        // product price
+        let applePrice = 15000
+        let mangoPrice = 20000
+        let grapePrice = 10000
+
+        // product stock
+        let appleStock = 10
+        let mangoStock = 15
+        let grapeStock = 20
+
+        // show product to user using alert
+        alert(`
+        Our Product
+        1. 🍎 Apple : Rp 15.000,00 /kg
+        2. 🥭 Mango : Rp 20.000,00 /kg
+        3. 🍇 Grape : Rp 10.000,00 /kg
+        `)
+
+        // ask user input
+        let apple, mango, grape
+        inputApple : while (true) {
+            apple = parseInt(prompt('How many kg 🍎 Apple you want to buy ?'))
+            if (apple > appleStock) {
+                alert(`⚠ input wrong!, product out of stock. 🍎 Apple stock = ${appleStock}`)
+            } else {
+                break inputApple
+            }
+        }
+
+        inputMango : while (true) {
+            mango = parseInt(prompt('How many kg 🥭 mango you want to buy ?'))
+            if (mango > mangoStock) {
+                alert(`⚠ input wrong!, product out of stock. 🥭 mango stock = ${mangoStock}`)
+            } else {
+                break inputMango
+            }
+        }
+
+        let inputGrape = true
+        while (inputGrape) {
+            grape = parseInt(prompt('How many kg 🍇 grape you want to buy ?'))
+            if (grape > grapeStock) {
+                alert(`⚠ input wrong!, product out of stock. 🍇 grape stock = ${grapeStock}`)
+            } else {
+                inputGrape = false
+            }
+        }
+
+        // calculate total price or receipt
+        let totalApple = apple * applePrice
+        let totalMango = mango * mangoPrice
+        let totalGrape = grape * grapePrice
+
+        // calculate total price
+        let totalPrice = totalApple + totalMango + totalGrape
+
+        // show user receipt
+        alert(`
+        you buy : 
+        1. ${apple} of apple 🍎   = ${apple} x ${applePrice}
+        2. ${mango} of mango 🥭 = ${mango} x ${mangoPrice}
+        3. ${grape} of grape 🍇 = ${grape} x ${grapePrice}
+        total receipt   = 💰 Rp ${totalPrice}, 00
+        `)
+
+        // prompt user input for payment
+        let money = parseInt(prompt('Input your total 💰 payment!'))
+        if (money < totalPrice) { // check payment is not enough
+            alert('Transaction has been cancelled. Not enough money 🙏.')
+        } else if (money > totalPrice) {
+            alert(`
+            Thank you. 🎉
+            your refund = 💰 Rp ${money - totalPrice},00
+            `)
+        } else {
+            alert('Thank you 🎉.')
+        }
+        
+        // request user confirm
+        let conf = confirm('Do you want to buy again ?')
+        if (conf === false) break main
+    }
+</script>

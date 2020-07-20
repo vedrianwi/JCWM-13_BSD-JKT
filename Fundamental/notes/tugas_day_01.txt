@@ -1,0 +1,13 @@
+Tugas day 01
+
+1. read about roadmap in https://roadmap.sh/
+2. script vs compile language
+3. app that build with JS engine
+4. make a JavaScript file (console.log(()) and HTML file (alert) to introduce your self. 
+console.log('your name ')
+// age
+// gender
+// city
+// background
+// hobby
+// why you like programming ?

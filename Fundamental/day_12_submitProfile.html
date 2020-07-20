@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Submit Profile</title>
+    </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            height: 25px;
+            min-width: 10px;
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+        }
+
+        tr td:first-child {
+            text-align: center;
+        }
+        form {
+            width: 60%;
+            margin-top:25px;
+        }
+        fieldset {
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+    <body>
+        <form>
+            <fieldset id="form-data">
+                <legend>Personal Data</legend>
+
+                <!-- input text-field -->
+                Name : <input type="text" id="name"/>
+                Age : <input type="number" id="age"/>
+                Occupation : <input type="text" id="occupation"/>
+
+                <!-- radio button -->
+                <br><br>
+                Gender :
+                <input type="radio" name="gender" value="Male" checked>Male
+                <input type="radio" name="gender" value="Female">Female
+
+                <!-- submit button -->
+                <br><br>
+                <button type="button" onclick="submitData()">Submit</button>
+            </fieldset>
+            <fieldset id="output-data">
+                <legend>Table Personal Data</legend>
+
+                <!-- output table -->
+                <table id="table-output">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Occupation</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </fieldset>
+        </form>
+    </body>
+    <script>
+        // database
+        let data = [
+            {
+                name : "Ali Muksin",
+                age : 25,
+                gender : "Male",
+                occupation : "Mobile App Developer"
+            },
+            {
+                name : "Jony Ive",
+                age : 53,
+                gender : "Male",
+                occupation : "Designer"
+            }
+        ]
+
+        class Profile {
+            constructor(_name, _age, _gender, _occupation) {
+                this.name = _name
+                this.age = _age
+                this.gender = _gender
+                this.occupation = _occupation
+            }
+        }
+
+        // show data
+        function showData () {
+            let tbody = document.getElementsByTagName('tbody')[0]
+
+            // do iteration
+            let output = []
+            for (let i = 0; i < data.length; i++) {
+                let tr = `<tr><td>${i+1}</td>`
+                
+                // loop inside object
+                for (let key in data[i]) {
+                    tr += `<td>${data[i][key]}</td>`
+                }
+                
+                tr +=`</tr>`
+                output.push(tr)
+            }
+            console.log(output)
+            tbody.innerHTML = output.join('')
+        }
+
+        // submit data
+        function submitData () {
+            // get all input from users
+            let input = document.getElementsByTagName('input'),
+            name = input[0].value,
+            age = input[1].value,
+            occupation = input[2].value,
+
+            // get radio button
+            gender = input[3].checked ? input[3].value : input[4].value
+            // if (input[3].checked) {
+            //     gender = input[3].value
+            // } else {
+            //     gender = input[4].value
+            // }
+            console.log(input)
+
+            // push input to database
+            data.push(new Profile(name, age, gender, occupation))
+            
+            // reset input value
+            input[0].value = ''
+            input[1].value = ''
+            input[2].value = ''
+
+            // show an updated data
+            showData()
+        }
+
+        showData()
+
+        // how to access object key : value
+        // console.log(data[0].name)
+        // console.log(data[0]["name"])
+    </script>
+</html>

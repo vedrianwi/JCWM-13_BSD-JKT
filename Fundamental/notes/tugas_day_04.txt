@@ -1,0 +1,34 @@
+1. pakai loop untuk menampilkan bilangan ganjil atau genap
+2. pakai loop untuk menampilkan bilangan prima (1-20)
+
+    /* 1. create JavaScript program using loop to generate alphabet letter in English 
+    by given range, for example : 
+    - user give range between 5 to 8, so the output will be e, f, g
+    - range between 3 to 5, output : c, d, e
+    - output in lower case
+    - output must in one alert
+    - give error if user input out of range, bellow 1 or more than equal 27
+    - give option to stop or generate again
+
+    hint : use sting method 
+    letter a has Unicode = 97
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
+    */
+
+   /* 2. make simple game : rock, scissor, paper
+   - user vs computer
+   - computer random, 
+   - user input 'rock', 'scissor', or 'paper', or you can use optional
+   - optional : user given input that represent value for rock, scissor , or paper
+   - example : 1 === rock, 2 === scissor, 3 === paper
+   - show alert for count how much user win or lose for both user and computer
+   - give option to play or stop the game
+   */
+
+  /* 3. make program to reverse string, 
+  example : 
+  - greeting => ngiteerg
+  - out => tuo
+  - etc.
+  */

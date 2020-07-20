@@ -1,0 +1,159 @@
+<script>
+    // product, price, and stock
+    let products = [
+        {
+            name : 'Apple 🍎',
+            price : 1500,
+            stock : 10
+        },
+        {
+            name : 'Mango 🥭',
+            price : 2000,
+            stock : 15
+        },
+        {
+            name : 'Grape 🍇',
+            price : 1000,
+            stock : 17
+        },
+    ]
+
+    let users = [
+        {
+            username : 'admin',
+            role : 'admin'
+        }
+    ]
+
+    class Product {
+        constructor(_name, _price, _stock) {
+            this.name = _name,
+            this.price = _price,
+            this.stock = _stock
+        }
+    }
+
+    function showProduct () {
+        let currentProduct = 'Our Product\n'
+        for (let i = 0; i < products.length; i++) {
+            currentProduct += `${i+1}. ${products[i].name} : Rp ${products[i].price},00 per-kg\n`
+        }
+        return currentProduct
+    }
+
+    // main loop
+    main : while (true) {
+
+        // option menu
+        let main = parseInt(prompt(`
+        Admin Menu
+        1. Add product
+        2. Remove product
+        3. Edit product
+        4. Show Product
+        5. Buy
+        6. Exit
+        `))
+
+        console.log('user choose menu : ' + main)
+
+        if (main === 1) { // add new product
+            let newProduct = prompt('Add new product name :')
+            let newPrice = parseInt(prompt('Add new product price : '))
+            let newStock = parseInt(prompt('Add how much product in stock : '))
+
+            // check user input
+            if (newProduct === '' || newPrice === NaN || newStock === NaN) {
+                alert('Wrong input 😔.')
+            } else {
+                products.push(new Product(newProduct, newPrice, newStock))
+            }
+        } else if (main === 2) { // remove product
+            // show product
+            let remove = parseInt(prompt(showProduct() + '\n\nChoose product to delete 🚮'))
+
+            // chek user input
+            if (remove === NaN || remove > products.length || remove < 0){
+                alert('Wrong input 😔.') 
+            } else {
+                products.splice(remove - 1, 1)
+            }
+        } else if (main === 3) { // edit product
+            // show product
+            let edit = parseInt(prompt(showProduct() + '\n\nChoose product to edit ✒'))
+
+            // check user input
+            if (edit === NaN || edit > products.length || edit < 0) {
+                alert('Wrong input 😔.') 
+            } else {
+                let editProduct = prompt('Edit product name : ', products[edit - 1].name) // prompt('message', default value)
+                let editPrice = parseInt(prompt(`Edit ${editProduct} price : `, products[edit - 1].price))
+                let editStock = parseInt(prompt(`Edit ${editProduct} stock :`, products[edit - 1].stock))
+                 
+                // edit array element
+                products[edit - 1].name = editProduct
+                products[edit - 1].price = editPrice
+                products[edit - 1].stock = editStock
+            }
+        } else if (main === 4) { // show products
+            // show product
+            alert(showProduct())
+        } else if (main === 5) { // buy product
+            // show product to user using alert
+            alert(showProduct())
+
+            // ask user input
+            let quantity = new Array(products.length) // [..., ..., ..., ..., ...]
+            for (let i = 0; i < products.length; i++) {
+                inputQuantity : while (true) {
+                    quantity[i] = parseInt(prompt(`How many ${products[i].name} you want to buy ?`, 0))
+                    
+                    // check user input
+                    if (quantity[i] > products[i].stock) {
+                        alert(`⚠ input wrong!, ${products[i].name} out of stock = ${products[i].stock}`)
+                    } else {
+                        break inputQuantity
+                    }
+                }
+            }
+
+            // calculate total price or receipt
+            // quantity = [1, 15, 6, 7, ...]
+            let totalPrice = 0
+            for (let i = 0; i < quantity.length; i++) {
+                totalPrice += quantity[i] * products[i].price
+            }
+
+            // show user receipt
+            let receipt = 'you buy : \n'
+            for (let i = 0; i < quantity.length; i++) {
+                receipt += `${i+1}. ${quantity[i]} of ${products[i].name} = ${quantity[i]} x ${products[i].price} \n`
+            }
+            alert(receipt + `\n\ntotal  = 💰 Rp ${totalPrice},00`)
+
+            // prompt user input for payment
+            let money
+            payment : while (true) {
+                money = parseInt(prompt('Input your total 💰 payment!', 0))
+                if (money < totalPrice) { // check payment is not enough
+                    alert('Not enough money 🙏.')
+                } else if (money > totalPrice) {
+                    alert(`
+                    Thank you. 🎉
+                    your refund = 💰 Rp ${money - totalPrice},00
+                    `)
+                    break payment
+                } else {
+                    break payment
+                    alert('Thank you 🎉.')
+                }
+            }
+
+            // ask confirmation
+            let conf = confirm('Back to main menu 🏠?')
+            if (conf === false) break main
+        } else { // exit
+            break main
+        }
+    }    
+</script>

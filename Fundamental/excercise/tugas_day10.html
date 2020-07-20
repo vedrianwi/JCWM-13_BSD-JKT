@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercise : Day 10</title>
+    </head>
+    <body>
+        <form>
+            <h1>No.1 Get User Data</h1><br><br>
+            <!-- input -->
+            Name : <input type="text" id="name"/><br><br>
+            Age  : <input type="number" id="age"/><br><br>
+            Gender :
+            <input type="radio" name='gender' value="Male" checked/>Male
+            <input type="radio" name='gender' value="Female"/>Female<br>
+
+            <br>
+            <button type="button" onclick="getUserData()">Click Me!</button>
+
+            <!-- output -->
+            <p id='output-1'></p>
+        </form>
+        <form>
+            <h1>No.2 Power of number</h1>
+            Masukan angka : 
+            <input type="text" id='number'/><br>
+            <button type="button" onclick="power()">Power</button>
+            <p id='output-2'></p>
+        </form>
+        <form>
+            <h1>No.3 Power</h1>
+            Give 1st number :<input type="text" id="number-1"/><br>
+            Give 2nd number as pow:<input type="text" id="number-2"/><br>
+
+            <br>
+            <button type="button" onclick="power2()">Power2</button>
+            <p id='output-3'></p>
+        </form>
+        <form>
+            <h1>No.4 Search Character Count</h1>
+
+            Given string : <input type="text" id="string"/><br>
+            search by : <input type="text" id="char"/><br>
+
+            <button type="button" onclick="search()">Search</button>
+            <p id='output-4'></p>
+        </form>
+    </body>
+    <script>
+        function getUserData () {
+            console.log('get user data.')
+
+            // get input data
+            let input = document.getElementsByTagName('input'),
+            name = input[0].value,
+            age = input[1].value,
+            gender
+            console.log(input)
+
+            // return html collection of input tag in 1st form tag
+            // console.log(document.getElementsByTagName('form')[0].getElementsByTagName('input'))
+
+            console.log(`${name} & ${age}`)
+            console.log(typeof(age))
+
+            // check radio button
+            if (input[2].checked) {
+                gender = input[2].value
+            } else {
+                gender = input[3].value
+            }
+
+            // give output
+            document.getElementById('output-1').innerHTML = `Name : ${name}<br> Age : ${age}<br> Gender : ${gender}`
+        }
+
+        function power () {
+            let number = parseInt(document.getElementById('number').value)
+            document.getElementById('output-2').innerHTML = `result of ${number}<sup>2</sup> is ${Math.pow(number, 2)}`
+        }
+
+        function power2 () {
+            let number1 = parseInt(document.getElementById('number-1').value),
+            number2 = parseInt(document.getElementById('number-2').value)
+
+            document.getElementById('output-3').innerHTML = `result of ${number1}<sup>${number2}</sup> : ${Math.pow(number1, number2)}`
+        }
+
+        function search () {
+            let str = document.getElementById('string').value
+            let char = document.getElementById('char').value
+            
+            let count = str.split('').filter(item => item === char).length
+
+            document.getElementById('output-4').innerHTML = `there ${count} of ${char}`
+        }
+    </script>
+</html>

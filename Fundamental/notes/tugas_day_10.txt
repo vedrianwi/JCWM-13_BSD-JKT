@@ -1,0 +1,6 @@
+tugas day 10
+1. soal di slide
+2. plus timer di HTML : 
+00 : 00 : 00
+3. challenge
+4. 2 radio button

@@ -1,0 +1,5 @@
+1. coba bikin login ama logout
+2. function => buat clone function setTimeOut, SetInterval, map, filter, reduce, repeat
+3. buat function sorting untuk array tanpa sort dari JS => buble sort => untuk number
+4. buat function untuk ngefilter or remove duplicate 
+filterDuplicate('abbccddaaaasseee') => abcdse

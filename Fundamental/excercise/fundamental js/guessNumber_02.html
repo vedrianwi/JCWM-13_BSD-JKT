@@ -1,0 +1,20 @@
+<script>
+    // range number between 1 to 5
+    let randomNumber = (Math.round(Math.random() * 5)) + 1
+    console.log(randomNumber)
+    
+    while (true) { // infinite loop
+        let userNumber = parseInt(prompt('Please input your guess number! (between 1 to 5)'))
+        if (userNumber === randomNumber) {
+            alert(`correct.`)
+            break
+        }
+        // give option to continue or break
+        let conf = confirm('Do you to continue ?')
+        if (conf === false) {
+            alert(`Thank you. the right number is ${randomNumber}`)
+            break
+        }
+    }
+
+</script>

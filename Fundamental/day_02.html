@@ -1,0 +1,32 @@
+<script>
+    /* Interaction: alert, prompt, confirm
+    in HTML environment or browser there some few of its user-interface functions.
+
+    - ⚠ alert
+    This shows a message and pauses script execution until the user presses “OK”.
+
+    - ⛔ prompt
+    shows a modal window with a text message and prompt user input
+
+    - 👌 confirm
+    The function confirm shows a modal window with a question and two buttons: OK and Cancel.
+    
+    */
+   
+   // alert
+   alert('hello this is alert')
+   alert('greeting from me')
+
+   // prompt
+   let age = parseInt(prompt('please input your age !')); // data type from prompt is string
+   console.log(typeof(age))
+   console.log('input user ' + age)
+
+   // Concatenation or formatting string --> Backtick (``)
+   console.log(`user input is : ${age}`)
+
+   // confirm
+   let confirmation = confirm('please press ok if you agree'); // return Boolean true or false
+   console.log(typeof(confirmation))
+   console.log(confirmation)
+</script>

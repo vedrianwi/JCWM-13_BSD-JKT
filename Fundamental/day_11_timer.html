@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Timer</title>
+    </head>
+    <style>
+        body {
+            margin-top: 20%;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            font-size: 100px;
+        }
+    </style>
+    <body>
+        <center>
+            <div id='container'>
+                <div>00</div> :
+                <div>00</div> :
+                <div>00</div>
+            </div>
+            <button type="button" onclick="start()">Start</button>
+            <button type="button" onclick="stop()">Stop</button>
+        </center>
+    </body>
+    <script>
+        // get current date using Date Object
+        let date = new Date()
+        let hour = date.getHours()
+        let minutes = date.getMinutes()
+        let seconds = date.getSeconds()
+
+        // change textContent or innerHTML of div elements
+        let div = document.getElementById('container').children
+        // console.log(div)
+        div[0].innerHTML = hour >= 10 ? hour : `0${hour}`
+        div[1].innerHTML = minutes >= 10 ? minutes : `0${minutes}`
+        div[2].innerHTML = seconds >= 10 ? seconds : `0${seconds}`
+
+        // on button press or fire event
+        let intervalId
+        function start () {
+            intervalId = setInterval(() => {
+                seconds++
+
+                // update DOM element
+                div[2].innerHTML = seconds >= 10 ? seconds : `0${seconds}`
+                if (seconds >= 60) {
+                    minutes++
+                    seconds = 0
+                }
+
+                div[1].innerHTML = minutes >= 10 ? minutes : `0${minutes}`
+                if (minutes >= 60) {
+                    hour++
+                    minutes = 0
+                }
+
+                div[0].innerHTML = hour >= 10 ? hour : `0${hour}`
+
+            }, 1000)
+        }
+
+        function stop () {
+            clearInterval(intervalId)
+            // change background style
+            // document.body.style.backgroundColor = '#34495e'
+        }
+    </script>
+</html>
