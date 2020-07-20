@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image and box</title>
+        <style>
+            /* * {
+                margin: 0px; padding: 0px;
+                box-sizing: border-box;
+            } */
+
+            .container {
+                position: relative;
+                height: 50vh;
+                width: 60vw;
+                background-color: antiquewhite;
+            }
+
+            #box-1 {
+                display: inline-block;
+                position: relative;
+                margin: 50px;
+                overflow: hidden;
+                /* box-sizing: border-box; */
+                background-color: aqua;
+                /* margin: 50px; */
+                height: 200px;
+                width: 200px;
+                /* padding: 50px; */
+            }
+
+            img {
+                width: 100%;
+                /* object-fit: cover; */
+            }
+
+            #box-2 {
+                background-color: blueviolet;
+                height: 200px;
+                width: 200px;
+                display: inline-block;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="box-1">
+                <!-- <img src="https://images.unsplash.com/photo-1591486657816-3abb903559db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60"/> -->
+            </div>
+            <div id="box-2"></div>
+        </div>
+    </body>
+</html>

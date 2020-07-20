@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boostrap from</title>
+        <link rel="stylesheet" type="text/css" href="/formStyle.css"/>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="header">
+                <img src="/assets/bootstrap-solid.svg" height="70" width="70" alt="boostrap-logo">
+                <h1>Checkout form</h1>
+                <p>Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+            </div>
+            <div class="body">
+                <div class="left">
+                    <div id="billing">
+                        <h1>Billing form</h1>
+                        <div id="name-container">
+                            <div id="first-name">
+                                <label>First name</label>
+                                <input type="text" id="first-name">
+                            </div>
+                            <div id="last-name">
+                                <label>Last name</label>
+                                <input type="text" id="first-name">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="username-container">
+                        <label>Username</label>
+                        <div id="username">
+                            <div>@</div>
+                            <input type="text" placeholder="username"/>
+                        </div>
+                    </div>
+                    <div id="address-container">
+                        <label>Email (Optional)</label>
+                        <input type="email" placeholder="you@example.com">
+                        <label>Address</label>
+                        <input type="text" placeholder="1234 Main St">
+                        Address 2 (Optional)
+                        <input type="text" placeholder="Apartment or Suite">
+                    </div>
+                    <div id="country-container">
+                        <div id="country">
+                            <label>Country</label>
+                            <select>
+                                <option>Choose...</option>
+                                <option>United State</option>
+                            </select>
+                        </div>
+                        <div id="state">
+                            <label>State</label>
+                            <select>
+                                <option>Choose...</option>
+                                <option>California</option>
+                            </select>
+                        </div>
+                        <div id="zip">
+                            <label>Zip</label>
+                            <input type="number">
+                        </div>
+                    </div>
+                    <div id="ship">
+                        <div>
+                            <input type="checkbox">Shipping address is the same as my billing address
+                        </div>
+                        <div>
+                            <input type="checkbox">Save this information for next time
+                        </div>
+                    </div>
+                    <div id="payment">Payment</div>
+                    <div id="button">
+                        <button type="button">continue to checkout</button>
+                    </div>
+                </div>
+                <div class="rigth">cart</div>
+            </div>
+            <div class="footer">
+                <p>© 2017-2020 Company Name</p>
+                <ul>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

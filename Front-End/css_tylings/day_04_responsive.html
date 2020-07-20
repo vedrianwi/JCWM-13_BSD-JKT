@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive</title>
+        <style>
+
+            * {
+                transition: all 250ms ease-out;
+            }
+
+            .container {
+                height: 50vh;
+                width: 50vw;
+                background-color: yellow;
+            }
+
+            /* media query */
+            @media only screen and (max-width: 600px) {
+                .container {
+                    background-color: blue;
+                }
+            }
+
+            /* css structure */
+            button {
+                padding: 10px 15px;
+                border: none;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(29, 22, 22, 0.2);
+            }
+
+            button:focus {
+                outline: none;
+                transform: scale(0.9);
+            }
+
+            button:visited {
+                transform: scale(1.0);
+            }
+
+            button:hover {
+                transform: scale(0.7);
+            }
+            
+            .radius-5 {
+                border-radius: 5px;
+            }
+
+            .radius-50 {
+                border-radius: 50px;
+            }
+
+            .primary {
+                background-color: #0984e3;
+                color: white;
+            }
+
+            .danger {
+                background-color: #d63031;
+                color: white;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!-- <div class="container">
+            content
+        </div> -->
+
+        <button type="button">Click Me</button>
+        <button type="button" class="radius-50">Button radius 5</button>
+        <button type="button" class="radius-50 primary">Primary</button>
+        <button type="button" class="radius-5 danger">Danger</button>
+
+        <!-- <div class="radius-50 primary">div</div> -->
+    </body>
+</html>

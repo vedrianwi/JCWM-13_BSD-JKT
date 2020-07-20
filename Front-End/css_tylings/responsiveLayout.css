@@ -1,0 +1,108 @@
+* {
+    margin: 0px; padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    height: auto; width: 100vw;
+    padding: 10px;
+}
+
+.container {
+    height: 100%; width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#content-1, #content-2, #content-3, #content-4 {
+    margin: 0px 0px 10px 0px;
+    display: flex;
+}
+
+#content-1 {
+    flex-basis: 20vh;
+    flex-direction: column;
+}
+
+#content-1 div {
+    flex-grow: 1;
+    background-color: orange;
+    margin: 5px 0px;
+}
+
+#content-2 {
+    background-color: yellow;
+    flex-basis: 25vh;
+}
+
+#content-3 {
+    flex-direction: column;
+}
+
+#content-3 div {
+    background-color: blue;
+    flex-basis: 40vh;
+    margin: 5px 0px;
+}
+
+#content-4 {
+    flex-direction: column;
+}
+
+#content-4 div {
+    background-color: grey;
+    flex-basis: 15vh;
+    margin: 5px 0px;
+}
+
+
+/* tablet */
+@media only screen and (min-width : 768px) {
+    #content-4 {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #content-4 div {
+        flex-basis: 49%;
+        height: 15vh;
+    }
+}
+
+/* desktop */
+@media only screen and (min-width : 1024px) {
+    #content-1 {
+        flex-basis: auto;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #content-1 div {
+        flex-grow: 0;
+        flex-basis: 49.5%;
+        height: 10vh;
+    }
+
+    #content-2 {
+        flex-basis: 35vh;
+    }
+
+    #content-3 {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #content-3 div {
+        flex-basis: 32.5%;
+        height: 25vh;
+    }
+
+    #content-4 {
+        flex-wrap: nowrap;
+    }
+
+    #content-4 div {
+        flex-basis: 24%;
+    }
+}

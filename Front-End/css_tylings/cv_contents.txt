@@ -1,0 +1,7 @@
+Nama lengkap
+Junior Web and Mobile Developer
+hosting => about me : latar belakang personal
+contact : formal: hp, email, adress
+          medsos : linkedin, ig, twitter, etc
+top skill : HTML, CSS, JavaScript, NodeJs, etc
+Education : Job Connector Web and mobile dveopment, Pruwadhika, Ongo
