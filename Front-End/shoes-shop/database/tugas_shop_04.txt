@@ -1,0 +1,4 @@
+1. lanjutakan input validation => username atau email
+2. resgiter => pastikan username and email belom pernah di pakai
+3. ubah component carousel => global store => redux
+4. bikin style halaman dan tampilakn product detail

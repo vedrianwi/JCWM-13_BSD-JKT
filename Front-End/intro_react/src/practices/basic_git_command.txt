@@ -1,0 +1,5 @@
+1. initialize git => git init
+2. git add . (semua file) and git add namafile
+3. git commit -m "pesan"
+4. git remote add origin http://urlgit...
+5. git push -u oring master

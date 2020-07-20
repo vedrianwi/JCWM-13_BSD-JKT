@@ -1,0 +1,4 @@
+1. buat halaman profile
+2. halaman history => user
+3. di halaman profile => ganti password atau username : 
+setiap mau ganti data minta conf password 

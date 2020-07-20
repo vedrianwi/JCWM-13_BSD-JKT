@@ -1,0 +1,6 @@
+1. bikim form indentitas => nama, umur, jenis kelamin (slect option), pekerjaan, agama (select option), alamat, pendidikian
+submit => table
+
+2. cobain MDBboostrap, material ui
+
+3. coba bikin halaman, modif halaman

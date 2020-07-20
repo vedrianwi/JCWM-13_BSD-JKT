@@ -1,0 +1,5 @@
+tugas => register => success => redirect to login page => coba username yg baru => redirect to home
+
+// register => username => min 6 char => !include symbol
+// passowrd => min 6 char, include symbol and number
+// 

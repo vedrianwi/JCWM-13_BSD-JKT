@@ -1,0 +1,4 @@
+1. add fitur edit
+2. di fitur add and edit check input => 
+input gx boleh ada yg kosong
+input email => bener atau gx

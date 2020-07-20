@@ -1,0 +1,7 @@
+input : country => search
+pilhan : category
+button => generate : card
+
+- reactsrtap
+- MDBoostrap
+- Mterial-UI
