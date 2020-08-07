@@ -1,0 +1,49 @@
+.profile-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-box {
+    width: 50vw;
+    height: 75vh;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 5%;
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info {
+    /* background-color: pink; */
+    width: 100%;
+    height: 50%;
+    margin-top: 2%;
+    padding: 3% 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-profile {
+    margin-top: 3%;
+}
+
+.button-container {
+    width: 100%;
+    /* background-color: pink; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
