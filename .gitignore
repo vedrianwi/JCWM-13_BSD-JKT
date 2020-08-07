@@ -10,3 +10,5 @@
 /back-end/api_jcwm13_bsd-jkt/node_modules
 /back-end/api_jcwm13_bsd-jkt/.env
 /back-end/fullstack-app/node_modules
+/back-end/mongodb/node_modules
+/back-end/mongodb/.env
