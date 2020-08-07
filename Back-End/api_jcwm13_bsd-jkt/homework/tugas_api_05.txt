@@ -1,0 +1,13 @@
+NOTES :
+ReduxThunk => 
+1. memungkinkan melakukan axios of request http di dalam action
+2. invoke multiple action type in singe action
+
+SUMMARY :
+- action pakai redux thunk
+- CRUD di products
+
+PR :
+- CRUD di category
+- action pakai redux thunk
+- optional => buat halaman login dan register

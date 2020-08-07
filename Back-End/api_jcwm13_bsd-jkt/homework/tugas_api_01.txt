@@ -1,0 +1,20 @@
+PR : 
+1. ketika user delete input password
+2. rapikan data => user dan profile saling berhubungan
+3. kalau user_id 1 di hapus, profil user_id 1 juga di hapus
+ - foreign key => cascade => on delete
+ - query
+4. crud di profile => add ? x, edit profile, delete ? x, get profile
+5. edit password
+
+delete => delete
+delete => ganti status => active => !active
+
+edit password :
+old :
+new :
+conf :
+
+fornt end : info passor incld, min,
+pass : alee!0
+

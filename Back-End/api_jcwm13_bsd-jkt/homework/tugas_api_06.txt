@@ -1,0 +1,28 @@
+Redux Thunk =>
+1. melakukan fecthing data / get data / http request menggunakan axios di dalam action
+2. melakukan multiple action type dalam astu fungsi action
+
+LOCAL VS GLOBAL STATE (LOCAL STATE vs REDUX)
+- umumnya state bentuknya object
+- mekanisme local dan global state 
+- LOCAL => 
+  - this.state (penyimpan data, object)
+  - access data lewat thi.state.[key]
+  - state sifatnya immutable / tidak bisa di ubah secara langsung, this.state.[key] = 10 : ERROR
+  - cara merubah state => function => this.setState()
+- GLOBAL =>
+  - reducers (penyimpan data, object), dibuat menggunakn createStore
+  - access data lewat this.props.[key], key => nama reducer, data di filter menggunakan mapStateToProps
+    * connect : react-redux, server by provider 
+  - redux sifatnya immutable
+  - cara merubah global state => function => action => this.props.[action_name()]
+  * redux thunk
+
+-- SETUP GLOBAL STORAGE : redux, react-redux, redux-thunk
+
+-- PENGABUNGAN 2 OBJECT
+obj a = { nama : 'alee' }
+obj b = { nama : 'lia' }
+a dan b saya gabungkan => { ...a, ...b } => { nama : 'lia' }
+
+TUGAS : lanjutakan CRUD category & login, buat halaman register, function logout
