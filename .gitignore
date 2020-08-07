@@ -5,3 +5,5 @@
 /front-end/shoes-shop/node_modules
 /front-end/review_frontend/node_modules
 /back-end/http_and_express_intro/node_modules
+/back-end/review_api/node_modules
+/back-end/review_api/.env
