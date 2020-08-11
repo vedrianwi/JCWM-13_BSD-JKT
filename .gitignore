@@ -12,3 +12,5 @@
 /back-end/fullstack-app/node_modules
 /back-end/mongodb/node_modules
 /back-end/mongodb/.env
+/back-end/api_ujian_backend_jcwm13/node_modules
+/back-end/api_ujian_backend_jcwm13/.env
