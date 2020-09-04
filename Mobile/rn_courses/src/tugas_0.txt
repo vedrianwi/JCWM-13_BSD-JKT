@@ -1,0 +1,16 @@
+buat cv/kartu-nama react-native app :
+fokus ui
+
+foto profile
+nama :
+title : FullStack Developer
+about/motto
+contact info :
+- birthday
+- no 
+- address
+- linkedin
+- twitter
+
+
+ref : https://reactnative.dev/docs/image

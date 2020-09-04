@@ -1,0 +1,12 @@
+1. Tugas : todo app => CRUD => EDIT v
+2. Mini App => GET DATA => TAMPILKAN DATA
+   a. news app => latihan
+   b. data dari news api
+   c. WebView
+3. Mini Project : menyiapkan API => PORT 8081
+   a. users => login, resgiter => account & profil
+      - 2 types of roles => user & admin
+      - upload gambar profile
+   b. product => get product & get by id
+   c. cart => CRUD => get, add, delete, update
+   d. history => add, gets

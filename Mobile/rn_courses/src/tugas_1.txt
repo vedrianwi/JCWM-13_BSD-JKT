@@ -1,0 +1,6 @@
+1. Shopping Or TodoApp
+2. minta input => hasil tampilkan dalam bentuk card list
+3. card di sentuh list akan di hapus
+
+latihan install react-native-vector-icons
+explore ui framework react-native-elements & nativebase
